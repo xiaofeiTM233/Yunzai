@@ -86,10 +86,10 @@ export default class Puppeteer extends Renderer {
 
     if (!this.browser || !connectFlag) {
       let config = this.config
-      if (!config.userDataDir) {
-        await fs.rm("temp/puppeteer", { force: true, recursive: true }).catch(() => {})
-        config = { ...config, userDataDir: `temp/puppeteer/${ulid()}` }
-      }
+      //if (!config.userDataDir) {
+      //  await fs.rm("temp/puppeteer", { force: true, recursive: true }).catch(() => {})
+      //  config = { ...config, userDataDir: `temp/puppeteer/${ulid()}` }
+      //}
       // 如果没有实例，初始化puppeteer
       this.browser = await puppeteer.launch(config).catch(async (err, trace) => {
         const errMsg = err.toString() + (trace ? trace.toString() : "")
