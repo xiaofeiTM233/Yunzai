@@ -27,9 +27,14 @@ export default class Puppeteer extends Renderer {
     /** 截图次数 */
     this.renderNum = 0
     this.config = {
-      headless: "new",
-      args: ["--disable-gpu", "--disable-setuid-sandbox", "--no-sandbox", "--no-zygote"],
-      ...config,
+      headless: config.headless || false,
+      args: config.args || [
+        "--disable-gpu",
+        "--disable-setuid-sandbox",
+        "--disable-blink-features=AutomationControlled",
+        "--no-sandbox",
+        "--no-zygote"
+      ]
     }
     if (config.chromiumPath || cfg?.bot?.chromium_path)
       /** chromium其他路径 */
